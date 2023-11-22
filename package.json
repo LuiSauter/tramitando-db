@@ -1,10 +1,12 @@
 {
-  "name": "mitramite-db",
+  "name": "tramitando-db",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sistema de seguimiento de trámites administrativos para los distritos",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
