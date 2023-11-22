@@ -1,0 +1,8 @@
+node_modules/
+
+# environment variable
+.env
+.env.local
+utils.ts
+
+/package-lock.json
