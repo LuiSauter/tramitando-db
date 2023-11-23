@@ -59,14 +59,14 @@ export const login = async (req, res) => {
 
     if (!userFound) {
       return res.status(400).json({
-        message: ['The email does not exist']
+        message: 'The email does not exist'
       })
     }
 
     const isMatch = await bcrypt.compare(password, userFound.password)
     if (!isMatch) {
       return res.status(400).json({
-        message: ['The password is incorrect']
+        message: 'The password is incorrect'
       })
     }
 
@@ -83,7 +83,7 @@ export const login = async (req, res) => {
 
     res.json({
       id: userFound._id,
-      username: userFound.username,
+      name: userFound.name,
       email: userFound.email
     })
   } catch (error) {
@@ -93,6 +93,7 @@ export const login = async (req, res) => {
 
 export const verifyToken = async (req, res) => {
   const { token } = req.cookies
+  console.log(token)
   if (!token) return res.send(false)
 
   jwt.verify(token, TOKEN_SECRET, async (error, user) => {
@@ -103,7 +104,7 @@ export const verifyToken = async (req, res) => {
 
     return res.json({
       id: userFound._id,
-      username: userFound.username,
+      name: userFound.name,
       email: userFound.email
     })
   })
