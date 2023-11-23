@@ -1,6 +1,6 @@
-import app from './app.js'
-import { PORT } from './config.js'
-import './database.js'
+import app from './src/app.js'
+import { PORT } from './src/config.js'
+import './src/database.js'
 
 const LISTEN_PORT = process.env.NODE_ENV === 'development' ? 4000 : PORT
 
