@@ -8,6 +8,10 @@ export const getUsers = async (req, res) => {
 export const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
+      .populate({
+        path: 'tramits',
+        populate: { path: 'descriptionTramit', select: 'title description requirement precio' }
+      })
     return res.status(200).json(user)
   } catch (error) {
     return res.status(500).json({ message: 'Error on server' })
