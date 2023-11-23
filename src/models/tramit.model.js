@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+/* eslint-disable indent */
+import mongoose, { Schema } from 'mongoose'
 
 const tramitSchema = new Schema({
     title: {
@@ -8,26 +9,30 @@ const tramitSchema = new Schema({
     description: {
         type: String
     },
-    tramittype: {
-        required : true,
+    dependencies: {
+        type: String,
+        required: true
+    },
+    location: {
         type: String
     },
     state: {
         required: true,
-        type : String
+        type: String
     },
-    idUser: {
+    category: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Category'
     },
-    idInstitution: {
+    subCategory: {
         type: Schema.Types.ObjectId,
-        ref: 'Institution'
+        ref: 'SubCategory'
     },
     idDistrict: {
         type: Schema.Types.ObjectId,
         ref: 'District'
     }
-}, { timestamps: true })
+},
+    { timestamps: true })
 
 export default mongoose.model('Tramit', tramitSchema)
