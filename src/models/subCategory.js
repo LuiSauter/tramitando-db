@@ -3,15 +3,16 @@ import mongoose, { Schema } from 'mongoose'
 const subCategorySchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category'
   },
-  tramits: [{
+  descriptionTramits: [{
     type: Schema.Types.ObjectId,
-    ref: 'Tramit'
+    ref: 'DescriptionTramit'
   }]
 }, { timestamps: true })
 

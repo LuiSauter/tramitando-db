@@ -1,10 +1,10 @@
-import mongoose from 'mongoose'
-import { Schema } from 'zod'
+import mongoose, { Schema } from 'mongoose'
 
 const districtSchema = new Schema({
   nro: {
     required: true,
-    type: Number
+    type: Number,
+    unique: true
   },
   direction: String,
   deputyMayor: {
@@ -17,7 +17,8 @@ const districtSchema = new Schema({
   },
   idOwner: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
   idMembers: [{
     type: Schema.Types.ObjectId,

@@ -31,19 +31,19 @@ const userSchema = new Schema({
   photo: {
     type: String,
     trim: true
-  }
-  // DistrictAgent: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'District'
-  // },
+  },
+  DistrictAgent: {
+    type: Schema.Types.ObjectId,
+    ref: 'District'
+  },
   // NeighborhoodRepresentative: {
   //   type: Schema.Types.ObjectId,
   //   ref: 'Neighborhood'
   // },
-  // InstitutionAgent: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Institution'
-  // }
+  tramits: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Tramit'
+  }]
 }, { timestamps: true })
 
 export default model('User', userSchema)
