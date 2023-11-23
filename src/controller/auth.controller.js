@@ -6,7 +6,7 @@ import { createAccessToken } from '../helpers/jwt-generate.js'
 
 export const register = async (req, res) => {
   try {
-    const { name, email, password, photo } = req.body
+    const { name, email, password, photo, ci, direction, phone } = req.body
 
     const userFound = await User.findOne({ email })
 
@@ -22,6 +22,9 @@ export const register = async (req, res) => {
       photo,
       name,
       email,
+      ci,
+      direction,
+      phone,
       password: passwordHash
     })
 

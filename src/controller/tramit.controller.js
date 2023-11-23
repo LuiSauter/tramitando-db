@@ -8,13 +8,17 @@ export const getTramits = async (req, res) => {
 }
 export const getTramit = async (req, res) => {
   const tramit = await TramitModel.findById(req.params.id)
+    .populate({
+      path: 'user', select: 'name email photo ci direction phone'
+    })
+    .populate({ path: 'descriptionTramit', select: 'title description requirement precio' })
   return res.status(200).json(tramit)
 }
 export const createTramit = async (req, res) => {
   try {
-    const { message, state, user, descriptionTramit } = req.body
+    const { state, user, descriptionTramit } = req.body
     const newTramit = new TramitModel({
-      message, state, user, descriptionTramit
+      state, user, descriptionTramit
     })
     await newTramit.save()
     await descriptionTramitModel.findByIdAndUpdate(descriptionTramit, {
