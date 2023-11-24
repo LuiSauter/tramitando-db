@@ -37,9 +37,9 @@ export const register = async (req, res) => {
     })
 
     res.cookie('token', token, {
-      httpOnly: process.env.NODE_ENV !== 'development',
-      secure: true,
-      sameSite: 'none'
+      httpOnly: process.env.NODE_ENV !== 'development'
+      // secure: true,
+      // sameSite: 'none'
     })
 
     console.log(userSaved)
@@ -115,8 +115,8 @@ export const verifyToken = async (req, res) => {
 
 export const logout = async (req, res) => {
   res.cookie('token', '', {
-    httpOnly: true,
-    secure: true,
+    // httpOnly: true,
+    // secure: true,
     expires: new Date(0)
   })
   return res.sendStatus(200)
